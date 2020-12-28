@@ -1,0 +1,40 @@
+{% extends "descriptionary_intermediate.html" %}
+{% block pagetitle %} | Join Game{% endblock pagetitle %}
+{% block content %}
+{% load static %}
+<div class="flex-container">
+
+  <div class="game-title">
+    <h1>Ready to Join?</h1>
+  </div>
+
+  <div class="join-form">
+    <form action="join" method="POST">
+      {% csrf_token %}
+
+      <div class="input-group">
+        <label for="gameName">room code:</label>
+        <input id="gameName" type="text" maxlength="4" name="gameName" style="text-transform:uppercase">
+      </div>
+
+      <div class="input-group">
+        <label for="playerName">your name:</label>
+        <input id="playerName" type="text" maxlength="12" name="playerName">
+      </div>
+
+      <div class="input-group join-buttons">
+        <span><button class="btn btn-primary btn-lg" type="submit">join game</button></span>
+      </div>
+
+      <div class="input-group join-buttons">
+        <span><button class="btn btn-outline-primary btn-lg" type="submit">go back</button></span>
+
+      </div>
+    </form>
+  </div>
+
+</div>
+{% if join_error != '' %}
+<p class="join-error alert-danger alert">{{ join_error }}</p>
+{% endif %}
+{% endblock content %}

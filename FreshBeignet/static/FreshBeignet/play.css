@@ -1,0 +1,129 @@
+.waiting-gif {
+  background-color: green;
+  margin: 50em auto;
+}
+
+.drawing-btn {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.drawing-btn button {
+  /* flex: 0 0 auto; */
+  /* margin-right: 1em; */
+  /* width: auto; */
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: auto;
+}
+
+/* .line-option {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: auto;
+} */
+
+.fine-btn {
+  /* font-weight: 50; */
+  /* background-color: #b1aea3; */
+  border: solid thin #000;
+  border-radius: 1px;
+  width: auto;
+}
+
+.medium-btn {
+  /* font-weight: 500; */
+  /* background-color: #b1aea3; */
+  border: solid medium #000;
+  border-radius: 1px;
+  width: auto;
+}
+
+.bold-btn {
+  /* font-weight: 900; */
+  /* background-color: #b1aea3; */
+  border: solid thick #000;
+  border-radius: 1px;
+  width: auto;
+}
+
+.black-btn {
+  background-color: #000;
+  color: white;
+  font-weight: bold;
+  border-radius: 100%;
+  border-style: none;
+  width: 20px;
+  height: 20px;
+}
+
+.red-btn {
+  background-color: #F80707;
+  color: white;
+  font-weight: bold;
+  border-radius: 100%;
+  border-style: none;
+  width: 20px;
+  height: 20px;
+}
+
+.blue-btn {
+  background-color: #3498DB;
+  color: #000;
+  font-weight: bold;
+  border-radius: 100%;
+  border-style: none;
+  width: 20px;
+  height: 20px;
+}
+
+.green-btn {
+  background-color: #2ECC71;
+  color: #000;
+  font-weight: bold;
+  border-radius: 100%;
+  border-style: none;
+  width: 20px;
+  height: 20px;
+}
+
+.yellow-btn {
+  background-color: #F1C40F;
+  color: #000;
+  font-weight: bold;
+  border-radius: 100%;
+  border-style: none;
+  width: 20px;
+  height: 20px;
+}
+
+canvas {
+  border: #290903 solid;
+  width: 100%;
+  margin: 2em auto;
+}
+
+.player-name {
+  color: #AE550D;
+}
+
+h1 p span {
+  padding: .075em .25em;
+  letter-spacing: 2px;
+  background-color: #00A9A5;
+  color: white;
+  font-weight: bold;
+}
+
+@media (max-width:639px) {
+  /* .line-option {
+    flex-direction: column;
+  } */
+  button{
+    min-width: 20px;
+    min-height: 20px;
+  }
+}

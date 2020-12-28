@@ -1,0 +1,40 @@
+{% extends "descriptionary_intermediate.html" %}
+{% block pagetitle %} | Host Game{% endblock pagetitle %}
+{% block content %}
+{% load static %}
+<div class="flex-container">
+
+  <h1>Join the Room!</h1>
+  <h2>Room Code: <span>{{ game.game_name }}</span></h2>
+  <div class="join-form">
+
+    <h3 class="players-joined">Players Already Joined:</h3>
+    {% for plyr in game.player_list_set.all %}
+    <p class="player-name">{{ plyr.player_name }}</p>
+    {% endfor %}
+    {% if game.player_list_set.all.count >= 3 %}
+    <form action="host_start" method="POST">
+      {% csrf_token %}
+      <button class="btn btn-primary btn-lg">start game</button>
+    </form>
+    {% endif %}
+  </div>
+
+</div>
+<script>
+  window.setInterval(checkRF, 1000);
+
+  function checkRF() {
+    var refreshCheck = new XMLHttpRequest();
+    refreshCheck.open('GET', 'checkrefresh', true);
+    refreshCheck.setRequestHeader('Content-Type',
+      'application/x-www-form-urlencoded');
+    refreshCheck.onload = function() {
+      if (refreshCheck.response === "REFRESH") {
+        location.reload();
+      }
+    }
+    refreshCheck.send(null);
+  }
+</script>
+{% endblock content %}

@@ -1,0 +1,26 @@
+{% extends "descriptionary_intermediate.html" %}
+{% block pagetitle %} | Player Stacks{% endblock pagetitle %}
+{% block content %}
+{% load static %}
+    <h1>Room Code: {{ game.game_name }}</h1>
+    <h1>{{ player.player_name }}'s' Progression:</h1>
+    {% for submitter_name,label,thing in stack %}
+    {% if label == "image" %}
+    <p>{{ submitter_name }} drew:</p>
+    <img src="{% static thing %}" alt="Describe this.">
+    {% elif label == "text" %}
+    <p>{{ submitter_name }} wrote:</p>
+    <p>{{ thing }}</p>
+    {% endif %}
+    {% endfor %}
+    {% if player.player_id < game.player_list_set.count %}
+    <form action="showplayerstacks" method="POST">
+        {% csrf_token %}
+        <button>Next Player</button>
+    </form>
+    {% endif %}
+    <form action="home" method="GET">
+        {% csrf_token %}
+        <button>Descriptionary Home</button>
+    </form>
+{% endblock content %}

@@ -1,0 +1,39 @@
+{% extends "descriptionary_intermediate.html" %}
+{% block pagetitle %} | Home{% endblock pagetitle %}
+{% block content %}
+{% load static %}
+
+<div class="flex-container">
+
+
+  <img class="fblogo" src="{% static 'FreshBeignet/fblogo-nosmoke.svg' %}" alt="Fresh Beignet logo">
+
+
+  <div class="game-title">
+    <h3>welcome to</h3>
+    <h1 class="game-name">Descriptionary</h1>
+    <h3>a fun game to play with friends</h3>
+  </div>
+
+  <div class="buttons">
+
+    <div class="join-button">
+      <form action="join" method="GET">
+        {% csrf_token %}
+        <button class="btn btn-primary btn-lg">join game</button>
+      </form>
+    </div>
+
+    <div class="host-button">
+      <form action="host" method="GET">
+        {% csrf_token %}
+        <button class="btn btn-outline-primary btn-lg">host game</button>
+    </div>
+
+    </form>
+
+  </div>
+
+</div>
+
+{% endblock content %}

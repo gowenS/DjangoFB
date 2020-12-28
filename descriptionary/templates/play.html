@@ -1,0 +1,84 @@
+{% extends "descriptionary_intermediate.html" %}
+{% block pagetitle %} | Play Game{% endblock pagetitle %}
+{% block content %}
+{% load static %}
+{% if player.submit_state == game.game_state or game.game_state == 0 %}
+
+<div class="flex-container">
+  <h1>Waiting...</h1>
+  <div class="waiting-gif">
+    ADD GIF HERE
+  </div>
+  <script>
+    window.setInterval(checkRF, 1000);
+
+    function checkRF() {
+      var refreshCheck = new XMLHttpRequest();
+      refreshCheck.open('GET', 'checkrefresh', true);
+      refreshCheck.setRequestHeader('Content-Type',
+        'application/x-www-form-urlencoded');
+      refreshCheck.onload = function() {
+        if (refreshCheck.response === "REFRESH") {
+          location.reload();
+        }
+      }
+      refreshCheck.send(null);
+    }
+  </script>
+  {% elif not game.game_state|divisibleby:2 %}
+  <div class="flex-container">
+
+
+    <h1>Draw This:</h1>
+    <p><span>{{ clue }}</span></p>
+    <div class="drawing-btn">
+      <!-- <div class="line-option"> -->
+        <button class="fine-btn" onclick="changeLineWeight('fine')">Fine</button>
+        <button class="medium-btn" onclick="changeLineWeight('medium')">Medium</button>
+        <button class="bold-btn" onclick="changeLineWeight('bold')">Bold</button>
+      <!-- </div> -->
+<!-- <div class="line-option"> -->
+  <button class="black-btn" onclick="changeLineColor('black')"></button>
+  <button class="red-btn" onclick="changeLineColor('red')"></button>
+  <button class="blue-btn" onclick="changeLineColor('blue')"></button>
+  <button class="green-btn" onclick="changeLineColor('green')"></button>
+  <button class="yellow-btn" onclick="changeLineColor('yellow')"></button>
+<!-- </div> -->
+
+
+    </div>
+    <div>
+      <canvas id="canvas" width="355" height="440"></canvas>
+    </div>
+    <div class="host-button">
+      <button class="btn btn-outline-primary btn-lg" onclick="deleteLine()">Undo</button>
+      <button class="btn btn-primary btn-lg" type="submit" form=submit_form>Submit</button>
+    </div>
+  </div>
+
+  <form action="play" method="post" onsubmit="prepareImg();" id="submit_form">
+    {% csrf_token %}
+    <input id="submittedimg" name="img_from_player" type="hidden" value="">
+  </form>
+  <script>
+    function prepareImg() {
+      var canvas = document.getElementById('canvas');
+      document.getElementById('submittedimg').value = canvas.toDataURL();
+    }
+  </script>
+  {% else %}
+  <h1>Describe this drawing:</h1>
+  <img src="{% static clue %}" alt="Describe this.">
+  <div>
+    <!-- text area needs to be wider and 1.5x the size of the font.  -->
+    <textarea name="text_description" maxlength="300" form="submit_form" autofocus></textarea>
+  </div>
+  <form action="play" method="post" id="submit_form">
+    {% csrf_token %}
+    <button type="submit">Submit</button>
+  </form>
+
+</div>
+{% endif %}
+<script src="{% static 'FreshBeignet/canvas.js' %}"></script>
+{% endblock content %}

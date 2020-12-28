@@ -1,0 +1,26 @@
+.players-joined{
+  margin-bottom: 1em;
+}
+
+.player-name{
+  font-size: 1.5rem;
+  margin-bottom: .5em;
+}
+
+h2 + .join-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 3em;
+  min-height:40vh;
+  max-width: 100%;
+  max-height: 50%;
+}
+
+h2 span{
+  padding: .075em .25em;
+  letter-spacing: 2px;
+  background-color: #00A9A5;
+  color: white;
+  font-weight: bold;
+}

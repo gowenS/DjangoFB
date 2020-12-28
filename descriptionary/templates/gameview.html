@@ -1,0 +1,45 @@
+{% extends "descriptionary_intermediate.html" %}
+{% block pagetitle %} | Game {% endblock pagetitle %}
+{% block content %}
+{% load static %}
+<div class="flex-container">
+
+
+  <h2>Room Code: {{ game.game_name }}</h2>
+  <h3>Round {{ game.game_state }}</h3>
+  {% if game.game_state|divisibleby:2 %}
+  <h1>Submit your Drawing!</h1>
+  {% else %}
+  <h1>Submit your Description!</h1>
+  {% endif %}
+  <p>Player Submissions:</p>
+  {% for plyr in game.player_list_set.all %}
+  <div>
+    <p class="player-name">{{ plyr.player_name }}</p>
+    {% if plyr.submit_state == game.game_state %}
+    <img src="{% static 'descriptionary/submitted.png' %}" alt="Submitted Already">
+    {% else %}
+    <img src="{% static 'descriptionary/not_submitted.png' %}" alt="Waiting for submission">
+    {% endif %}
+  </div>
+
+{% endfor %}
+
+<script>
+  window.setInterval(checkRF, 1000);
+
+  function checkRF() {
+    var refreshCheck = new XMLHttpRequest();
+    refreshCheck.open('GET', 'checkrefresh', true);
+    refreshCheck.setRequestHeader('Content-Type',
+      'application/x-www-form-urlencoded');
+    refreshCheck.onload = function() {
+      if (refreshCheck.response === "REFRESH") {
+        location.reload();
+      }
+    }
+    refreshCheck.send(null);
+  }
+</script>
+{% endblock content %}
+</div>

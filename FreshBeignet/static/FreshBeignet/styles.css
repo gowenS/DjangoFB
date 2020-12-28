@@ -1,0 +1,192 @@
+body {
+  background-color: #F4F2F3;
+  color: #290903;
+  font-family: 'Roboto Condensed', sans-serif;
+  text-align: center;
+  /* min-height: 100vh; */
+}
+
+.flex-container {
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  margin: 5em auto;
+}
+
+.fblogo {
+  display: flex;
+  margin: 3em auto 1.75em;
+  width: 30%;
+  max-width: 150px;
+}
+
+h1 {
+  font-family: 'Sansita', sans-serif;
+  font-size: 2.5rem;
+  /* margin-top: 2.7em; */
+  padding: 0 .8em;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1rem;
+  font-weight: 400;
+  margin: .5em auto .03em;
+}
+
+button {
+  margin: 0 auto 1.25em;
+  width: 100%;
+  min-width: 110px;
+  min-height: 50px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.game-title {
+  margin: 1.5em auto 5em;
+}
+
+.game-name {
+  margin-top: 0;
+}
+
+.btn-primary {
+  background-color: #D88A20;
+  border: none;
+  color: #F4F2F3;
+  cursor: pointer;
+}
+
+.btn-outline-primary {
+  background-color: #F4F2F3;
+  color: #ae550d;
+  border: 2px solid #ae550d;
+  cursor: pointer;
+}
+
+.btn-primary:hover, .btn-outline-primary:hover {
+  background-color: #00A9A5;
+  border: none;
+  color: #F4F2F3
+}
+
+.btn-primary:active, .btn-outline-primary:active {
+  background-color: #00A9A5;
+  border: none;
+  color: #F4F2F3
+}
+
+.join-form {
+  justify-content: center;
+  background-color: rgba(101, 98, 86, .1);
+  width: 70vw;
+  padding-top: 2em;
+  padding-bottom: 2em;
+  border-radius: 20px;
+  flex-shrink:1;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.input-group:last-child {
+  margin-bottom: 0;
+}
+
+.input-group label {
+  font-size: 1rem;
+  font-weight: 800;
+  margin-bottom: .5em;
+}
+
+.input-group input {
+  ;
+  padding: 0 4em;
+  border-width: 2px;
+  border-color: #290903;
+  border-radius: 5px;
+  padding: .25em .5em;
+  margin-left: .75em;
+}
+
+.join-buttons {
+  margin: 0;
+}
+
+.input-group input:active {
+  border-color: #D88A20;
+}
+
+.players-joined {
+  margin-bottom: 16em;
+}
+
+.player-name {
+  font-weight: bold;
+  line-height: 1.5;
+}
+
+.alert {
+  background-color: #00A9A5;
+  color: #F4F2F3;
+  border: none;
+  color: inherit;
+  /* position: absolute; */
+  margin: auto;
+}
+
+/* change max width of logo with each media query size. also don't forget to change the size of the text */
+@media (min-width:992px) {
+  .flex-container {
+    margin-top: 10em;
+  }
+
+  .fblogo {
+    max-width: 225px;
+    margin: 0 auto 1em;
+  }
+
+  h1 {
+    font-size: 3.5rem;
+  }
+
+  h2 {
+    font-size: 2.25em;
+  }
+
+  h3 {
+    font-size: 1.75rem;
+  }
+
+  .game-title {
+    margin: 3em auto 5em;
+  }
+
+  .join-form {
+    max-width: 50%;
+  }
+
+  .buttons {
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-self: center;
+    max-width: 300px;
+  }
+
+  /* .logo{
+    display: inline-block;
+  } */
+}
